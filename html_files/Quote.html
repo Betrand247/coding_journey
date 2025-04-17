@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get a Quote – ShipXpress</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f1f4f8;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .quote-container {
+            max-width: 600px;
+            background: white;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0074d9;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        input,
+        select,
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #0074d9;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005fa3;
+        }
+
+        .quote-result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e0f7e9;
+            border: 1px solid #b2dfdb;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quote-container">
+        <h2>Get a Shipping Quote</h2>
+        <form id="quoteForm">
+            <label for="origin">Origin City</label>
+            <input type="text" id="origin" required />
+
+            <label for="destination">Destination City</label>
+            <input type="text" id="destination" required />
+
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" required min="0.1" step="0.1" />
+
+            <label for="type">Shipping Type</label>
+            <select id="type" required>
+                <option value="standard">Standard</option>
+                <option value="express">Express</option>
+                <option value="overnight">Overnight</option>
+            </select>
+
+            <button type="submit">Calculate Quote</button>
+        </form>
+
+        <div class="quote-result" id="quoteResult">
+            <h3>Estimated Cost: $<span id="cost">0.00</span></h3>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("quoteForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+
+            fetch("quote.php", {
+                method: "POST",
+                body: formData
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.success) {
+                        document.getElementById("cost").innerText = data.cost;
+                        document.getElementById("quoteResult").style.display = "block";
+                    }
+                })
+                .catch((err) => console.error("Error:", err));
+        });
+    </script>
+
+</body>
+
+</html>

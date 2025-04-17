@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing – ShipXpress</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fb;
+        }
+
+        .pricing-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .pricing-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .pricing-section p {
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .pricing-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            width: 300px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #0074d9;
+        }
+
+        .card .price {
+            font-size: 2em;
+            margin: 10px 0;
+            color: #222;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .card ul li {
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .card button {
+            background: #0074d9;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .card button:hover {
+            background: #005fa3;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="pricing-section">
+        <h2>Choose Your Shipping Plan</h2>
+        <p>Simple and transparent pricing for all shipment needs.</p>
+
+        <div class="pricing-cards">
+            <!-- Standard Plan -->
+            <div class="card">
+                <h3>Standard</h3>
+                <p class="price">$9.99</p>
+                <ul>
+                    <li>Delivery in 5–7 Days</li>
+                    <li>Tracking Included</li>
+                    <li>Email Support</li>
+                </ul>
+                <button>Select Plan</button>
+            </div>
+
+            <!-- Express Plan -->
+            <div class="card">
+                <h3>Express</h3>
+                <p class="price">$19.99</p>
+                <ul>
+                    <li>Delivery in 2–3 Days</li>
+                    <li>Real-Time Tracking</li>
+                    <li>Priority Support</li>
+                </ul>
+                <button>Select Plan</button>
+            </div>
+
+            <!-- Overnight Plan -->
+            <div class="card">
+                <h3>Overnight</h3>
+                <p class="price">$29.99</p>
+                <ul>
+                    <li>Next-Day Delivery</li>
+                    <li>Live SMS Updates</li>
+                    <li>24/7 Support</li>
+                </ul>
+                <button>Select Plan</button>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

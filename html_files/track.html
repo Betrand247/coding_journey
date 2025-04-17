@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Shipment - ShipXpress</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">ShipXpress</div>
+        <nav class="nav">
+            <a href="/html_files/index.html">Home</a>
+            <a href="/html_files/track.html">Track</a>
+            <a href="/html_files/services.html">Services</a>
+            <a href="/html_files/about.html">About</a>
+            <a href="/html_files/contact.html">Contact</a>
+        </nav>
+        <a href="#" class="cta">Get a Quote</a>
+    </header>
+
+    <!-- Track Hero -->
+    <section class="hero track-hero">
+        <div class="hero-text">
+            <h1>Track Your Shipment</h1>
+            <p>Enter your tracking number to view the latest shipment updates.</p>
+        </div>
+    </section>
+
+    <!-- Tracking Section -->
+    <section class="tracking-section">
+        <form id="tracking-form" class="tracking-form">
+            <input type="text" id="tracking-number" placeholder="Enter Tracking Number..." required>
+            <button type="submit">Track</button>
+        </form>
+        
+        <div id="tracking-result" class="tracking-status" style="display:none;">
+            <h2>Shipment Status</h2>
+            <p><strong>Tracking ID:</strong> <span id="track-id"></span></p>
+            <p><strong>Status:</strong> <span id="track-status"></span></p>
+            <p><strong>Estimated Delivery:</strong> <span id="track-date"></span></p>
+        </div>
+        
+        <script>
+            document.getElementById('tracking-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const number = document.getElementById('tracking-number').value;
+
+                const res = await fetch(`http://localhost/shipxpress/track.php?id=${number}`);
+                const data = await res.json();
+
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    document.getElementById('tracking-result').style.display = 'block';
+                    document.getElementById('track-id').innerText = data.id;
+                    document.getElementById('track-status').innerText = data.status;
+                    document.getElementById('track-date').innerText = data.eta;
+                }
+            });
+        </script>
+
+
+        <div class="tracking-status">
+            <h2>Shipment Status</h2>
+            <p><strong>Tracking ID:</strong> SHPX123456789</p>
+            <p><strong>Status:</strong> In Transit</p>
+            <p><strong>Estimated Delivery:</strong> April 16, 2025</p>
+
+            <div class="progress-bar">
+                <div class="progress" style="width: 70%;"></div>
+            </div>
+
+            <ul class="tracking-steps">
+                <li class="complete">Order Placed</li>
+                <li class="complete">Dispatched</li>
+                <li class="active">In Transit</li>
+                <li>Out for Delivery</li>
+                <li>Delivered</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="shipping-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About ShipXpress</h3>
+                <p>Delivering packages across borders with ease, speed, and transparency. Your logistics partner in
+                    growth.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/html_files/track.html">Track</a></li>
+                    <li><a href="/html_files/Quote.html">Quote</a></li>
+                    <li><a href="/html_files/careers.html">Careers</a></li>
+                    <li><a href="/html_files/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: support@shipxpress.com</p>
+                <p>Phone: +1 800 123 4567</p>
+                <p>HQ: 123 Portway Blvd, New York, NY</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShipXpress. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
