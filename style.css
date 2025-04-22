@@ -1,0 +1,153 @@
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Main Style */
+body {
+  background-color: #333;
+  color: #fff;
+  font-family: cursive;
+}
+
+/* Header */
+
+.main-header {
+  background-color: black;
+}
+
+.main-header .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* background-color: red; */
+  /* border: 1px solid red; */
+}
+
+.logo-div {
+  width: 100px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 2rem;
+}
+
+/* Nav */
+.main-header .header-nav ul {
+  display: flex;
+  gap: 1rem;
+}
+.main-header .header-nav a {
+  font-weight: bold;
+}
+
+/* Actions */
+.main-header .actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.main-header .actions a {
+  padding: 0.5rem 1rem;
+  background-color: red;
+  border-radius: 2rem;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.main-header .actions a.signin {
+  background-color: transparent;
+  /* border: 1px solid #fff; */
+  color: red;
+}
+
+/* Hanburger */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.hamburger .hamburger-line {
+  display: block;
+  height: 2px;
+  width: 20px;
+  background-color: #fff;
+  margin: 0.3rem 0;
+}
+
+.header-closer-btn {
+  display: none;
+}
+/* Media Queries */
+
+/* Tablet */
+@media (max-width: 768px) {
+  body {
+    background-color: red !important;
+  }
+
+  .main-header .header-nav {
+    display: none;
+  }
+
+  .main-header .header-nav.active {
+    display: block;
+  }
+
+  /* CODE: Header Mobile Styles */
+  .main-header .header-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 380px;
+    height: 100%;
+    background-color: #333;
+  }
+
+  .main-header .header-nav ul {
+    flex-direction: column;
+    padding: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .header-closer-btn {
+    border: none;
+    background-color: transparent;
+    color: red;
+    font-size: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: 2rem;
+    cursor: pointer;
+  }
+
+  /* Hanburger */
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Mobile */
+@media (max-width: 428px) {
+  body {
+    background-color: green !important;
+  }
+}
